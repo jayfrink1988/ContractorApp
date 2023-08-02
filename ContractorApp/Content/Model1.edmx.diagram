@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eeb4f8ab2d564daa984ed629ca9f160f" Name="Diagram1">
+        <EntityTypeShape EntityType="ContractorModel.Contractor" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ContractorModel.Employer" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ContractorModel.Location" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ContractorModel.Program" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ContractorModel.Supervisor" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <AssociationConnector Association="ContractorModel.FK__Contracto__Emplo__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="ContractorModel.FK__Contracto__Locat__5070F446" ManuallyRouted="false" />
+        <AssociationConnector Association="ContractorModel.FK__Contracto__Progr__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="ContractorModel.FK__Contracto__Super__4E88ABD4" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ContractorModel.Institution" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="ContractorModel.FK__Contracto__Insti__6477ECF3" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

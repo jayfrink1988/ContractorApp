@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ContractorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Contractor">
+          <Key>
+            <PropertyRef Name="ContractorID" />
+          </Key>
+          <Property Name="ContractorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Lname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProgramID" Type="int" />
+          <Property Name="SupervisorID" Type="int" />
+          <Property Name="EmployerID" Type="int" />
+          <Property Name="LocationID" Type="int" />
+          <Property Name="InstitutionID" Type="int" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="work_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="personal_email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Employer">
+          <Key>
+            <PropertyRef Name="EmployerID" />
+          </Key>
+          <Property Name="EmployerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Institution">
+          <Key>
+            <PropertyRef Name="InstitutionID" />
+          </Key>
+          <Property Name="InstitutionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InstitutionName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Program">
+          <Key>
+            <PropertyRef Name="ProgramID" />
+          </Key>
+          <Property Name="ProgramID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProgramName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supervisor">
+          <Key>
+            <PropertyRef Name="SupervisorID" />
+          </Key>
+          <Property Name="SupervisorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SupLName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SupFName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Contracto__Emplo__4F7CD00D">
+          <End Role="Employer" Type="Self.Employer" Multiplicity="0..1" />
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employer">
+              <PropertyRef Name="EmployerID" />
+            </Principal>
+            <Dependent Role="Contractor">
+              <PropertyRef Name="EmployerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contracto__Insti__6477ECF3">
+          <End Role="Institution" Type="Self.Institution" Multiplicity="0..1" />
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Institution">
+              <PropertyRef Name="InstitutionID" />
+            </Principal>
+            <Dependent Role="Contractor">
+              <PropertyRef Name="InstitutionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contracto__Locat__5070F446">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Contractor">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contracto__Progr__4D94879B">
+          <End Role="Program" Type="Self.Program" Multiplicity="0..1" />
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramID" />
+            </Principal>
+            <Dependent Role="Contractor">
+              <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contracto__Super__4E88ABD4">
+          <End Role="Supervisor" Type="Self.Supervisor" Multiplicity="0..1" />
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supervisor">
+              <PropertyRef Name="SupervisorID" />
+            </Principal>
+            <Dependent Role="Contractor">
+              <PropertyRef Name="SupervisorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ContractorModelStoreContainer">
+          <EntitySet Name="Contractor" EntityType="Self.Contractor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employer" EntityType="Self.Employer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Institution" EntityType="Self.Institution" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supervisor" EntityType="Self.Supervisor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Contracto__Emplo__4F7CD00D" Association="Self.FK__Contracto__Emplo__4F7CD00D">
+            <End Role="Employer" EntitySet="Employer" />
+            <End Role="Contractor" EntitySet="Contractor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contracto__Insti__6477ECF3" Association="Self.FK__Contracto__Insti__6477ECF3">
+            <End Role="Institution" EntitySet="Institution" />
+            <End Role="Contractor" EntitySet="Contractor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contracto__Locat__5070F446" Association="Self.FK__Contracto__Locat__5070F446">
+            <End Role="Location" EntitySet="Location" />
+            <End Role="Contractor" EntitySet="Contractor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contracto__Progr__4D94879B" Association="Self.FK__Contracto__Progr__4D94879B">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="Contractor" EntitySet="Contractor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contracto__Super__4E88ABD4" Association="Self.FK__Contracto__Super__4E88ABD4">
+            <End Role="Supervisor" EntitySet="Supervisor" />
+            <End Role="Contractor" EntitySet="Contractor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ContractorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Contractor">
+          <Key>
+            <PropertyRef Name="ContractorID" />
+          </Key>
+          <Property Name="ContractorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProgramID" Type="Int32" />
+          <Property Name="SupervisorID" Type="Int32" />
+          <Property Name="EmployerID" Type="Int32" />
+          <Property Name="LocationID" Type="Int32" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Employer" Relationship="Self.FK__Contracto__Emplo__4F7CD00D" FromRole="Contractor" ToRole="Employer" />
+          <NavigationProperty Name="Location" Relationship="Self.FK__Contracto__Locat__5070F446" FromRole="Contractor" ToRole="Location" />
+          <NavigationProperty Name="Program" Relationship="Self.FK__Contracto__Progr__4D94879B" FromRole="Contractor" ToRole="Program" />
+          <NavigationProperty Name="Supervisor" Relationship="Self.FK__Contracto__Super__4E88ABD4" FromRole="Contractor" ToRole="Supervisor" />
+          <Property Name="work_email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="personal_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InstitutionID" Type="Int32" />
+          <NavigationProperty Name="Institution" Relationship="ContractorModel.FK__Contracto__Insti__6477ECF3" FromRole="Contractor" ToRole="Institution" />
+        </EntityType>
+        <EntityType Name="Employer">
+          <Key>
+            <PropertyRef Name="EmployerID" />
+          </Key>
+          <Property Name="EmployerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Contractors" Relationship="Self.FK__Contracto__Emplo__4F7CD00D" FromRole="Employer" ToRole="Contractor" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Contractors" Relationship="Self.FK__Contracto__Locat__5070F446" FromRole="Location" ToRole="Contractor" />
+        </EntityType>
+        <EntityType Name="Program">
+          <Key>
+            <PropertyRef Name="ProgramID" />
+          </Key>
+          <Property Name="ProgramID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProgramName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Contractors" Relationship="Self.FK__Contracto__Progr__4D94879B" FromRole="Program" ToRole="Contractor" />
+        </EntityType>
+        <EntityType Name="Supervisor">
+          <Key>
+            <PropertyRef Name="SupervisorID" />
+          </Key>
+          <Property Name="SupervisorID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SupLName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SupFName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Contractors" Relationship="Self.FK__Contracto__Super__4E88ABD4" FromRole="Supervisor" ToRole="Contractor" />
+        </EntityType>
+        <Association Name="FK__Contracto__Emplo__4F7CD00D">
+          <End Role="Employer" Type="Self.Employer" Multiplicity="0..1" />
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employer">
+              <PropertyRef Name="EmployerID" />
+            </Principal>
+            <Dependent Role="Contractor">
+              <PropertyRef Name="EmployerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contracto__Locat__5070F446">
+          <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location">
+              <PropertyRef Name="LocationID" />
+            </Principal>
+            <Dependent Role="Contractor">
+              <PropertyRef Name="LocationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contracto__Progr__4D94879B">
+          <End Role="Program" Type="Self.Program" Multiplicity="0..1" />
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramID" />
+            </Principal>
+            <Dependent Role="Contractor">
+              <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contracto__Super__4E88ABD4">
+          <End Role="Supervisor" Type="Self.Supervisor" Multiplicity="0..1" />
+          <End Role="Contractor" Type="Self.Contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supervisor">
+              <PropertyRef Name="SupervisorID" />
+            </Principal>
+            <Dependent Role="Contractor">
+              <PropertyRef Name="SupervisorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ContractorEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contractors" EntityType="Self.Contractor" />
+          <EntitySet Name="Employers" EntityType="Self.Employer" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="Programs" EntityType="Self.Program" />
+          <EntitySet Name="Supervisors" EntityType="Self.Supervisor" />
+          <AssociationSet Name="FK__Contracto__Emplo__4F7CD00D" Association="Self.FK__Contracto__Emplo__4F7CD00D">
+            <End Role="Employer" EntitySet="Employers" />
+            <End Role="Contractor" EntitySet="Contractors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contracto__Locat__5070F446" Association="Self.FK__Contracto__Locat__5070F446">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="Contractor" EntitySet="Contractors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contracto__Progr__4D94879B" Association="Self.FK__Contracto__Progr__4D94879B">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="Contractor" EntitySet="Contractors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contracto__Super__4E88ABD4" Association="Self.FK__Contracto__Super__4E88ABD4">
+            <End Role="Supervisor" EntitySet="Supervisors" />
+            <End Role="Contractor" EntitySet="Contractors" />
+          </AssociationSet>
+          <EntitySet Name="Institutions" EntityType="ContractorModel.Institution" />
+          <AssociationSet Name="FK__Contracto__Insti__6477ECF3" Association="ContractorModel.FK__Contracto__Insti__6477ECF3">
+            <End Role="Institution" EntitySet="Institutions" />
+            <End Role="Contractor" EntitySet="Contractors" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Institution">
+          <Key>
+            <PropertyRef Name="InstitutionID" />
+          </Key>
+          <Property Name="InstitutionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstitutionName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contractors" Relationship="ContractorModel.FK__Contracto__Insti__6477ECF3" FromRole="Institution" ToRole="Contractor" />
+        </EntityType>
+        <Association Name="FK__Contracto__Insti__6477ECF3">
+          <End Type="ContractorModel.Institution" Role="Institution" Multiplicity="0..1" />
+          <End Type="ContractorModel.Contractor" Role="Contractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Institution">
+              <PropertyRef Name="InstitutionID" />
+            </Principal>
+            <Dependent Role="Contractor">
+              <PropertyRef Name="InstitutionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ContractorModelStoreContainer" CdmEntityContainer="ContractorEntities1">
+          <EntitySetMapping Name="Contractors">
+            <EntityTypeMapping TypeName="ContractorModel.Contractor">
+              <MappingFragment StoreEntitySet="Contractor">
+                <ScalarProperty Name="InstitutionID" ColumnName="InstitutionID" />
+                <ScalarProperty Name="personal_email" ColumnName="personal_email" />
+                <ScalarProperty Name="work_email" ColumnName="work_email" />
+                <ScalarProperty Name="ContractorID" ColumnName="ContractorID" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="SupervisorID" ColumnName="SupervisorID" />
+                <ScalarProperty Name="EmployerID" ColumnName="EmployerID" />
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employers">
+            <EntityTypeMapping TypeName="ContractorModel.Employer">
+              <MappingFragment StoreEntitySet="Employer">
+                <ScalarProperty Name="EmployerID" ColumnName="EmployerID" />
+                <ScalarProperty Name="EmployerName" ColumnName="EmployerName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="ContractorModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Programs">
+            <EntityTypeMapping TypeName="ContractorModel.Program">
+              <MappingFragment StoreEntitySet="Program">
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supervisors">
+            <EntityTypeMapping TypeName="ContractorModel.Supervisor">
+              <MappingFragment StoreEntitySet="Supervisor">
+                <ScalarProperty Name="SupervisorID" ColumnName="SupervisorID" />
+                <ScalarProperty Name="SupLName" ColumnName="SupLName" />
+                <ScalarProperty Name="SupFName" ColumnName="SupFName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Institutions">
+            <EntityTypeMapping TypeName="ContractorModel.Institution">
+              <MappingFragment StoreEntitySet="Institution">
+                <ScalarProperty Name="InstitutionName" ColumnName="InstitutionName" />
+                <ScalarProperty Name="InstitutionID" ColumnName="InstitutionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,34 @@
+﻿@model ContractorApp.Content.Supervisor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Supervisor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SupLName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SupLName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SupFName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SupFName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SupervisorID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@*<style>
+        .jumbotron {
+            background-image: url("../Content/dciu.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+    <div class="jumbotron">
+        <h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>*@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-md-6"><img src="../Content/dciu.png" width="504" height="236" /></div>
+        <div class="col-xs-6 col-md-6"><img src="../Content/helmet.png" width="304" height="200" /></div>
+    </div>
+</div>
+<hr>
+@*<div class="container">
+        <h2>Circle</h2>
+        <p>The .img-circle class shapes the image to a circle (not available in IE8):</p>
+        <img src="../Content/construction.jpg" class="img-circle" alt="Cinque Terre" width="304" height="236">
+    </div>*@
+<h1>Contractor Application</h1>
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <h2>Contractors <i class="fas fa-toolbox"></i></h2>
+        <p>View/Edit List of Contractors.</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Contractors")">View Contractors &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Program <i class="fas fa-clipboard"></i></h2>
+        <p>
+            View/Edit list of Programs.
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Programs")">View Programs &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Institution <i class="fas fa-landmark"></i></h2>
+        <p>View/Edit list of Instituions.</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Institutions")">View Institution &raquo;</a></p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Supervisor <i class="fas fa-users"></i></h2>
+        <p>View/Edit list of Supervisors.</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Supervisors")">View Supervisors &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Agency <i class="fas fa-building"></i></h2>
+        <p>View/Edit List of Agencies.</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Employers")">View Agency &raquo;</a></p>
+    </div>
+
+    <div class="col-md-4">
+        <h2>Locations <i class="fas fa-map-pin"></i></h2>
+        <p>View/Edit List of Locations.</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index", "Locations")">View Locations &raquo;</a></p>
+    </div>
+</div>
+
+

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ContractorApp.Content.Employer>
+
+@{
+    ViewBag.Title = "Agency List";
+}
+
+<h2>Agencies</h2>
+
+<p>
+    @Html.ActionLink("Create New Agency", "Create", "Employers")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <span>Agency</span>
+            @*@Html.DisplayNameFor(model => model.EmployerName)*@
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployerName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.EmployerID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.EmployerID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.EmployerID }) |
+            @Html.ActionLink("View Contractors", "Agency", "Contractors", new { id = item.EmployerID }, null)
+        </td>
+    </tr>
+}
+
+</table>
